@@ -1,2 +1,2 @@
 # math-club-bot
-Discord.py bot for my college's Math Club
+discord.py bot for my college's Math Club
