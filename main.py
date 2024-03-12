@@ -514,6 +514,13 @@ async def resources(ctx):
     embed.description = embed.description + "\n[De Anza Student Success Center's Math, Science & Technology Resource Center](https://www.deanza.edu/studentsuccess/mstrc/)"
     embed.description = embed.description + "\n[De Anza's Math Performance Success Program](https://www.deanza.edu/mps/)"
     embed.description = embed.description + "\n[De Anza's Math, Engineering and Science Achievement Program](https://www.deanza.edu/mesa/)"
+    embed.description = embed.description + "\n[Math 10 Videos](https://www.ocf.berkeley.edu/~parran/math10videos.html)"
+    embed.description = embed.description + "\n[Math 1A Videos](https://www.ocf.berkeley.edu/~parran/math1avideos.html)"
+    embed.description = embed.description + "\n[Math 1B Videos](https://www.ocf.berkeley.edu/~parran/math1bvideos.html)"
+    embed.description = embed.description + "\n[Math 1C Videos](https://www.ocf.berkeley.edu/~parran/math1cvideos.html)"
+    embed.description = embed.description + "\n[Math 1D Videos](https://www.ocf.berkeley.edu/~parran/math1dvideos.html)"
+    embed.description = embed.description + "\n[Math 2A Videos](https://www.ocf.berkeley.edu/~parran/math2avideos.html)"
+    embed.description = embed.description + "\n[Math 2B Videos](https://www.ocf.berkeley.edu/~parran/math2bvideos.html)"
     await ctx.send(embed=embed)
 
 """@client.slash_command(name = "hello", description = "Bot says hello", guild_ids = [server_id])
