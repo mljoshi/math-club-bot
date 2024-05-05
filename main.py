@@ -88,7 +88,7 @@ async def meme(ctx, num_memes = 1): # Add checks for NSFW outside of Reddit's fl
     memes = num_memes
     if (num_memes > 10): # cap out at 10 memes
         memes = 10
-    checked_arr = [0] # includes 0 so that it skips 0 on the first iteration of the for loop (pinned meme), could probably change this to be an int last_checked instead of a list, idr why i made it a list to begin with but i think i removed the code necessitating a list
+    checked_arr = [0, 1] # includes 0 and 1 so that it skips 0 and 1 on the first iteration of the for loop (pinned meme), could probably change this to be an int last_checked instead of a list, idr why i made it a list to begin with but i think i removed the code necessitating a list
     num_not_sent = 0
     sent = 0
     num_requests = 0 # cap out at 25 tries

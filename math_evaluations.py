@@ -12,6 +12,7 @@ x = sympy.symbols('x')
 y = sympy.symbols('y')
 i = sympy.symbols('i')
 # i is for summation (in estimating an integral with a Riemann sum)
+n = sympy.symbols('n')
 
 def simplify(func):
     f = parse_expr(func, transformations='all')
