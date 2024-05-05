@@ -94,7 +94,7 @@ async def meme(ctx, num_memes = 1): # Add checks for NSFW outside of Reddit's fl
     num_requests = 0 # cap out at 25 tries
     while sent < memes and num_requests < 25:
         j = 0
-        hot = subreddit.hot(limit = memes + 1 + num_not_sent)
+        hot = subreddit.hot(limit = memes + 2 + num_not_sent) # +2 since 2 pinned memes
         async for submission in hot:
             if j == checked_arr[-1] + 1:
                 if 'i.redd.it' in submission.url and not profanity.contains_profanity(submission.title) and not profanity.contains_profanity(image_to_text(submission.url)) and not submission.over_18:
