@@ -232,6 +232,26 @@ async def def_integrate(ctx, function="x", a="0", b="1", variable_of_integration
 async def def_integral(ctx, function="x", a="0", b="1", variable_of_integration="x"):
     await def_integrate(ctx, function, a, b, variable_of_integration)
 
+@client.command(pass_context=True)
+async def double_integrate(ctx, func_xy="xy", var_1="y", a1="0", b1="x^2", var_2="x", a2="0", b2="1"):
+    """
+    Only supports x and y
+    Ex usage: ∫ 0 to 1 ∫ 0 to x^2 xcos(y) dy dx
+    .double_integrate x*cos(y) y 0 x^2 x 0 1
+    """
+    if (is_input_bad([func_xy, a1, b1, a2, b2])):
+        await ctx.send("Bad input")
+        return
+    ans = math_evaluations.double_integrate(func_xy, var_1, a1, b1, a2, b2)
+    im = math_evaluations.image_processing(ans)
+    discord_file = img_to_discord(im)
+    await ctx.send((code_blockify("∫ " + a2 + " to " + b2 + " ∫ " + a1 + " to " + b1 + " " + func_xy + " d" + var_1 + " d" + var_2)), file=discord_file)
+
+@client.command(pass_context=True)
+async def double_integral(ctx, func_xy="xy", var_1="y", a1="0", b1="x^2", var_2="x", a2="0", b2="1"):
+    await double_integrate(ctx, func_xy, var_1, a1, b1, var_2, a2, b2)
+
+    
 @client.command()
 async def ftc2(ctx, integral_of_x="1/2*x^2", a="0", b="1"):
     if (is_input_bad([integral_of_x, a, b])):
