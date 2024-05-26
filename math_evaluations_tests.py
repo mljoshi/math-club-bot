@@ -59,7 +59,6 @@ def run_tests():
     double_integrate_result = double_integrate(expression, "y", "0", "x^2", "0", "1")
     assert math.isclose(double_integrate_result, 0.229848847, rel_tol=1e-5)
 
-
     # Test ftc2 function
     expression = "3sin(2x)"
     ftc2_result = ftc2(expression, "pi/12", "pi/4")
