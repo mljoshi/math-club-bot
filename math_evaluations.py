@@ -10,6 +10,7 @@ from datetime import datetime
 # SymPy symbol definitions
 x = sympy.symbols('x')
 y = sympy.symbols('y')
+z = sympy.symbols('z')
 i = sympy.symbols('i')
 # i is for summation (in estimating an integral with a Riemann sum)
 n = sympy.symbols('n')
@@ -54,6 +55,16 @@ def def_integrate(func, a, b, variable_of_integration):
         sympy_ans = sympy.integrate(f, (x, a, b))
     else:
         sympy_ans = sympy.integrate(f, (y, a, b))
+    return sympy_ans
+
+def double_integrate(func_xy, var_1, a1, b1, a2, b2):
+    # Only a1 and b1 need transformations because only a1 and b1 may be non-constants
+    a1, b1, a2, b2 = (parse_expr(a1, transformations='all'), parse_expr(b1, transformations='all'), parse_expr(a2), parse_expr(b2))
+    f = parse_expr(func_xy, transformations='all')
+    if (var_1.lower() == 'x'):
+        sympy_ans = sympy.integrate(f, (x, a1, b1), (y, a2, b2))
+    else:
+        sympy_ans = sympy.integrate(f, (y, a1, b1), (x, a2, b2))
     return sympy_ans
 
 def ftc2(func, a, b):
