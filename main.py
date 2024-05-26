@@ -251,7 +251,6 @@ async def double_integrate(ctx, func_xy="xy", var_1="y", a1="0", b1="x^2", var_2
 async def double_integral(ctx, func_xy="xy", var_1="y", a1="0", b1="x^2", var_2="x", a2="0", b2="1"):
     await double_integrate(ctx, func_xy, var_1, a1, b1, var_2, a2, b2)
 
-    
 @client.command()
 async def ftc2(ctx, integral_of_x="1/2*x^2", a="0", b="1"):
     if (is_input_bad([integral_of_x, a, b])):
