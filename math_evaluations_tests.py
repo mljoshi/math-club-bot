@@ -51,6 +51,15 @@ def run_tests():
     def_integrate_result = def_integrate(expression, "0", "2", "y")
     assert math.isclose(def_integrate_result, 6.915107176308094, rel_tol=1e-5)
 
+    # Test double_integrate function
+    expression = "1 + xy"
+    double_integrate_result = double_integrate(expression, "x", "0", "y", "0", "1")
+    assert double_integrate_result == 5/8
+    expression = "x * cos(y)"
+    double_integrate_result = double_integrate(expression, "y", "0", "x^2", "0", "1")
+    assert math.isclose(double_integrate_result, 0.229848847, rel_tol=1e-5)
+
+
     # Test ftc2 function
     expression = "3sin(2x)"
     ftc2_result = ftc2(expression, "pi/12", "pi/4")
