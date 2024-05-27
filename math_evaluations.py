@@ -67,6 +67,26 @@ def double_integrate(func_xy, var_1, a1, b1, a2, b2):
         sympy_ans = sympy.integrate(f, (y, a1, b1), (x, a2, b2))
     return sympy_ans
 
+def triple_integrate(func_xyz, var_1, a1, b1, var_2, a2, b2, a3, b3):
+    # Only a1, b1, a2, and b2 need transformations because only those may be non-constants
+    a1, b1 = (parse_expr(a1, transformations='all'), parse_expr(b1, transformations='all'))
+    a2, b2 = (parse_expr(a2, transformations='all'), parse_expr(b2, transformations='all'))
+    a3, b3 = (parse_expr(a3), parse_expr(b3))
+    f = parse_expr(func_xyz, transformations='all')
+    if (var_1.lower() == 'x' and var_2.lower() == 'y'):
+        sympy_ans = sympy.integrate(f, (x, a1, b1), (y, a2, b2), (z, a3, b3))
+    elif (var_1.lower() == 'x' and var_2.lower() == 'z'):
+        sympy_ans = sympy.integrate(f, (x, a1, b1), (z, a2, b2), (y, a3, b3))
+    elif (var_1.lower() == 'y' and var_2.lower() == 'x'):
+        sympy_ans = sympy.integrate(f, (y, a1, b1), (x, a2, b2), (z, a3, b3))
+    elif (var_1.lower() == 'y' and var_2.lower() == 'z'):
+        sympy_ans = sympy.integrate(f, (y, a1, b1), (z, a2, b2), (x, a3, b3))
+    elif (var_1.lower() == 'z' and var_2.lower() == 'x'):
+        sympy_ans = sympy.integrate(f, (z, a1, b1), (x, a2, b2), (y, a3, b3))
+    else:
+        sympy_ans = sympy.integrate(f, (z, a1, b1), (y, a2, b2), (x, a3, b3))
+    return sympy_ans
+
 def ftc2(func, a, b):
     a, b = (parse_expr(a), parse_expr(b))
     f = parse_expr(func, transformations='all')
