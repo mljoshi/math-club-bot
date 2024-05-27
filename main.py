@@ -249,7 +249,36 @@ async def double_integrate(ctx, func_xy="xy", var_1="y", a1="0", b1="x^2", var_2
 
 @client.command(pass_context=True)
 async def double_integral(ctx, func_xy="xy", var_1="y", a1="0", b1="x^2", var_2="x", a2="0", b2="1"):
+    """
+    Only supports x and y
+    Ex usage: ∫ 0 to 1 ∫ 0 to x^2 xcos(y) dy dx
+    .double_integrate x*cos(y) y 0 x^2 x 0 1
+    """
     await double_integrate(ctx, func_xy, var_1, a1, b1, var_2, a2, b2)
+
+@client.command(pass_context=True)
+async def triple_integrate(ctx, func_xyz="xyz", var_1="z", a1="0", b1="1+x+y", var_2="y", a2="0", b2="sqrt(x)", var_3="x", a3="0", b3="1"):
+    """
+    Only supports x, y, and z
+    Ex usage: ∫ 0 to 1 ∫ 0 to sqrt(x) ∫ 0 to 1+x+y xyz dz dy dx
+    .triple_integrate xyz z 0 1+x+y y 0 sqrt(x) x 0 1
+    """
+    if (is_input_bad([func_xyz, a1, b1, a2, b2, a3, b3])):
+        await ctx.send("Bad input")
+        return
+    ans = math_evaluations.triple_integrate(func_xyz, var_1, a1, b1, var_2, a2, b2, a3, b3)
+    im = math_evaluations.image_processing(ans)
+    discord_file = img_to_discord(im)
+    await ctx.send((code_blockify("∫ " + a3 + " to " + b3 + " ∫ " + a2 + " to " + b2 + " ∫ " + a1 + " to " + b1 + " " + func_xyz + " d" + var_1 + " d" + var_2 + " d" + var_3)), file=discord_file)
+
+@client.command(pass_context=True)
+async def triple_integral(ctx, func_xyz="xyz", var_1="z", a1="0", b1="1+x+y", var_2="y", a2="0", b2="sqrt(x)", var_3="x", a3="0", b3="1"):
+    """
+    Only supports x, y, and z
+    Ex usage: ∫ 0 to 1 ∫ 0 to sqrt(x) ∫ 0 to 1+x+y xyz dz dy dx
+    .triple_integrate xyz z 0 1+x+y y 0 sqrt(x) x 0 1
+    """
+    await triple_integrate(ctx, func_xyz, var_1, a1, b1, var_2, a2, b2, var_3, a3, b3)
 
 @client.command()
 async def ftc2(ctx, integral_of_x="1/2*x^2", a="0", b="1"):
