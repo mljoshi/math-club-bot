@@ -569,6 +569,7 @@ async def resources(ctx):
     embed.description = embed.description + "\n[Math 1D Videos](https://www.ocf.berkeley.edu/~parran/math1dvideos.html)"
     embed.description = embed.description + "\n[Math 2A Videos](https://www.ocf.berkeley.edu/~parran/math2avideos.html)"
     embed.description = embed.description + "\n[Math 2B Videos](https://www.ocf.berkeley.edu/~parran/math2bvideos.html)"
+    embed.description = embed.description + "\n[Math 22 Videos](https://www.ocf.berkeley.edu/~parran/math22videos.html)"
     await ctx.send(embed=embed)
 
 """@client.slash_command(name = "hello", description = "Bot says hello", guild_ids = [server_id])
